@@ -21,7 +21,7 @@
       </q-card-section>
 
       <div class="q-gutter-sm">
-        <q-checkbox disable v-model="growth" label="Ich habe obige Informationen gelesen und verstanden..." />
+        <q-checkbox disable v-model="growth" label="Wachstum" />
       </div>
       <q-separator inset/>
 

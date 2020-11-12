@@ -18,12 +18,12 @@
           v-on:wheel.down="gotoNextSlide"
 
         >
-          <q-carousel-slide name="style" class="column no-wrap flex-center">
+          <q-carousel-slide name="style" class="column no-wrap flex-center"> <!--- v-for --->
             <q-icon name="style" size="56px" />
             <div class="q-mt-md text-center">
               <h3> Kopfumfang Geburt </h3>
 
-              <q-input dark outlined bottom-slots v-model="text_q1" label="Kopfumfang" color="grey-1">
+              <q-input dark outlined bottom-slots v-model="text_q1" label="Kopfumfang" color="grey-1" autofocus>
                 <template v-slot:append>
                   cm
                 </template>

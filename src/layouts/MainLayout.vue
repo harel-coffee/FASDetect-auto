@@ -1,4 +1,6 @@
 <template>
+
+  <div class="bg-image">
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
@@ -17,7 +19,6 @@
       </router-link>
       </q-toolbar>
     </q-header>
-
     <!---
 
 <q-drawer
@@ -46,12 +47,19 @@ content-class="bg-grey-1"
       <router-view />
     </q-page-container>
   </q-layout>
+  </div>
 </template>
 
 <style lang="sass">
 
 .router-link-active
   margin-left: 43%
+
+.bg-image
+  background-image: url(../assets/bg-network.jpg)
+  background-size: auto
+  background-repeat: no-repeat
+  background-attachment: fixed
 
 </style>
 

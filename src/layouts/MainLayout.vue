@@ -55,6 +55,10 @@ content-class="bg-grey-1"
 .router-link-active
   margin-left: 43%
 
+.q-header
+  //background-image: linear-gradient(to left, #036cab, #013250)
+  background-image: linear-gradient(to right, $primary, #1c6495)
+
 .bg-image
   background-image: url(../assets/bg-network.jpg)
   background-size: auto

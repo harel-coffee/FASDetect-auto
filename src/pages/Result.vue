@@ -6,10 +6,10 @@
         <div class="row">
         <div class="col-11">
           <div class="text-h6">ERGEBNIS</div>
-          <div class="text-subtitle2">Es besteht ein {{ risk_level }} RISIKO für FASD.</div>
+          <div class="text-subtitle2">Nach dem Screening besteht ein {{ risk_level }} RISIKO, dass der Patient an FASD leidet.</div>
         </div>
         <div class="col-1">
-          <q-icon :color=signal_color :name="risk_icon" size="xl"></q-icon>
+          <q-icon :color=signal_color :name="risk_icon" size="xl" class="signal"></q-icon>
         </div>
         </div>
       </q-card-section>
@@ -17,17 +17,38 @@
       <q-separator inset />
 
       <q-card-section>
+        Es bestehen Auffälligkeiten in folgenden Bereichen: <p/>
+
+      <div class="q-gutter-sm q-pl-md">
+        <q-checkbox disable v-model="growth" label="Wachstum" />
+<!--        <q-checkbox disable v-model="face" label="Faciale Dysmorphie" />-->
+<!--        <q-checkbox disable v-model="cns" label="Zentrales Nervensystem" />-->
+<!--        <q-checkbox disable v-model="alcohol" label="Potentielle intrauterine Alkoholexposition" />-->
+      </div>
+      <div class="q-gutter-sm q-pl-md">
+        <q-checkbox v-model="face" @input="click(face)" disable label="Faciale Dysmorphie" />
+      </div>
+      <div class="q-gutter-sm q-pl-md">
+        <q-checkbox disable v-model="cns" label="Zentrales Nervensystem" />
+      </div>
+      <div class="q-gutter-sm q-pl-md">
+        <q-checkbox disable v-model="alcohol" label="Potentielle intrauterine Alkoholexposition" />
+      </div>
+
+        <p/>
+      <u>Was bedeutet dieses Ergebnis?</u> <p/>
+
+        Sensitivität des Tests : 94% <br/>
+        Spezifizität des Tests : 78%<br/>
+        Zur Prävalenz von FAS(D) gibt es nur ungenaue Schätzungen, die von bis zu 5% der Bevölkerung ausgehen.
 
       </q-card-section>
 
-      <div class="q-gutter-sm">
-        <q-checkbox disable v-model="growth" label="Wachstum" />
-      </div>
       <q-separator inset/>
 
       <q-card-actions align="between">
-        <q-btn outline color="primary">Einführung</q-btn>
-        <q-btn unelevated :disabled="!checkbox" color="primary" icon-right="fas fa-exclamation-triangle" @click="gotoQuestionnaire">Starten</q-btn>
+        <q-btn outline color="primary">Details</q-btn>
+        <q-btn unelevated color="primary" to="/">Beenden</q-btn>
       </q-card-actions>
     </q-card>
 
@@ -38,6 +59,12 @@
 
 .q-card
   width: 50%
+
+.signal
+  display: inline-block
+  border-radius: 60px
+  box-shadow: 0px 0px 8px #888
+  padding: 0.1em 0.1em
 
 </style>
 
@@ -50,7 +77,10 @@ export default {
       risk_level: 'UNBEKANNTES',
       signal_color: 'white',
       risk_icon: '',
-      growth: true
+      growth: true,
+      face: false,
+      cns: false,
+      alcohol: true
     }
   },
 
@@ -60,25 +90,33 @@ export default {
     switch (risk) {
       case 'low':
         this.risk_level = 'GERINGES'
-        this.signal_color = 'green'
+        this.signal_color = 'green-7'
         this.risk_icon = 'fas fa-check'
         break
       case 'medium':
         this.risk_level = 'ERHÖHTES'
-        this.signal_color = 'yellow'
-        this.risk_icon = 'fas fa-exclamation-triangle'
+        this.signal_color = 'yellow-7'
+        this.risk_icon = 'fas fa-circle'
         break
       case 'high':
         this.risk_level = 'HOHES'
-        this.signal_color = 'red'
-        this.risk_icon = 'fas fa-radiation'
+        this.signal_color = 'red-7'
+        this.risk_icon = 'fas fa-circle'
     }
   },
 
   methods: {
 
-    gotoQuestionnaire () {
-      this.$router.push('q')
+    click () {
+      this.face ? this.face = true : this.face = false
+      this.$q.notify({
+
+        color: 'primary',
+        position: 'right',
+        message: 'asdadsfas'
+        // icon: icon
+
+      })
     }
 
   }

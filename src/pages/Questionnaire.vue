@@ -15,11 +15,24 @@
           :navigation-position="navPos"
           class="bg-primary text-white rounded-borders"
           v-on:keydown.enter="gotoNextSlide"
-          v-on:wheel.down="gotoNextSlide"
+          v-on:wheel="scrollSlides"
 
         >
+
+          <template v-slot:navigation-icon="{ active, btnProps, onClick }">
+<!--            <q-btn v-if="active" size="xl" icon="home" color="yellow" flat round dense @click="onClick" />-->
+            <q-btn v-if="active" size="sm" :icon="btnProps.icon" flat round dense @click="onClick" />
+            <q-btn v-else size="xs" :icon="btnProps.icon" color="grey-5" flat round dense @click="onClick" />
+          </template>
+
           <q-carousel-slide name="style" class="column no-wrap flex-center"> <!--- v-for --->
             <q-icon name="style" size="56px" />
+
+            <div class="absolute-top custom-caption">
+              <div class="text-h2">Kopfumfang</div>
+<!--              <div class="text-subtitle1">Geburt</div>-->
+            </div>
+
             <div class="q-mt-md text-center">
               <h3> Kopfumfang Geburt </h3>
 
@@ -119,9 +132,20 @@
   </q-page>
 </template>
 
-<style lang="sass">
+<style lang="sass" scoped>
 .q-carousel
-  width: 50%
+  width: 66%
+  height: 100%
+
+.rounded-borders
+  border-radius: 16px
+
+.custom-caption
+  text-align: center
+  padding: 12px
+  color: white
+  background-color: rgba(0, 0, 0, .3)
+
 </style>
 
 <script>
@@ -145,6 +169,18 @@ export default {
 
   methods: {
 
+    scrollSlides (e) {
+      if (e.wheelDelta > 0) {
+        this.gotoPreviousSlide()
+      } else if (e.wheelDelta < 0) {
+        this.gotoNextSlide()
+      } else {
+        // this is for Firefox, which does not support wheelDelta
+        // TODO fix scrolling for Firefox
+        this.gotoNextSlide()
+      }
+    },
+
     gotoNextSlide () {
       this.$refs.carousel.next()
       console.log('GOTO NEXT!!!!!')
@@ -160,7 +196,7 @@ export default {
       let errorMessage = 'Keine Verbindung zum Backend'
       let icon = 'report_problem'
       if (error.response.status === 401) {
-        errorMessage = 'Authentifiyierung fehlgeschlagen'
+        errorMessage = 'Authentifizierung fehlgeschlagen'
         icon = 'lock'
       }
       quasar.notify({
@@ -184,7 +220,7 @@ export default {
         .catch((error) => { this.notify(this.$q, error) })
 
       // TODO: remove the following line as soon as backend is available
-      this.$q.sessionStorage.set('risk', 'low')
+      this.$q.sessionStorage.set('risk', 'high')
       this.$router.replace('result')
     },
 

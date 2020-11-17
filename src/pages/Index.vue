@@ -11,21 +11,18 @@
 
       <q-card-section>
 
-        Diese Applikation dient dem Screening von FASD. Sie ersetzt keine Diagnose. <br>
-        Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, <br>
-        tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. Hi omnes lingua, institutis, <br>
-        legibus inter se differunt. Gallos ab Aquitanis Garunna flumen, a Belgis Matrona et Sequana6 dividit. <br>
-        Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, <br>
-        minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent, important, <br>
-        proximique sunt Germanis, qui trans Rhenum incolunt, quibuscum continenter bellum gerunt. <br>
-        Qua de causa Helvetii quoque reliquos Gallos virtute praecedunt, quod fere cotidianis proeliis cum Germanis contendunt, <br>
-        cum aut suis finibus eos prohibent aut ipsi in eorum finibus bellum gerunt. Eorum una pars, <br>
-        quam Gallos obtinere dictum est, initium capit a flumine Rhodano, continetur Garumna flumine,<br>
-        Oceano, finibus Belgarum, attingit etiam ab Sequanis11 et Helvetiis flumen Rhenum, <br>
-        vergit ad septentriones. Belgae ab extremis Galliae finibus oriuntur, <br>
-        pertinent ad inferiorem partem fluminis Rheni, spectant in septentrionem et orientem solem.<br>
-        Aquitania a Garunna flumine ad Pyrenaeos montes et eam partem Oceani quae est ad Hispaniam pertinet; <br>
-        spectat inter occasum solis et septentriones.
+        <q-scroll-area
+          :thumb-style="thumbStyle"
+          :bar-style="barStyle"
+          style="height: 200px"
+          >
+          <!--          style="height: 200px; max-width: 300px;"-->
+
+          <div v-for="n in 100" :key="n" class="q-pa-xs">
+            Diese Applikation dient dem Screening von FASD. Sie ersetzt keine Diagnose. <br>
+          </div>
+
+        </q-scroll-area>
 
       </q-card-section>
 
@@ -36,7 +33,13 @@
 
       <q-card-actions align="between">
         <q-btn outline color="primary" @click="info = true">Weitere Informationen</q-btn>
-        <q-btn unelevated :disabled="!checkbox" color="primary" icon-right="fas fa-chevron-right" @click="gotoQuestionnaire">Starten</q-btn>
+<!--        <q-btn unelevated :disabled="!checkbox" color="primary" icon-right="fas fa-chevron-right" @click="gotoQuestionnaire">Starten</q-btn>-->
+        <q-btn unelevated :disabled="!checkbox" color="primary" @click="gotoQuestionnaire">
+          <div>
+            Starten
+          </div>
+          <q-icon right size="0.85em" name="fas fa-chevron-right"/>
+        </q-btn>
       </q-card-actions>
 
       <q-dialog v-model="info">
@@ -48,7 +51,7 @@
           <q-separator />
 
           <q-card-section style="max-height: 50vh" class="scroll">
-            <p v-for="n in 15" :key="n">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam exercitationem aut, natus minima, porro labore.</p>
+            <p v-for="n in 15" :key="n">Dies ist ein Test asdfasd;fkasdfj;asdkjfjas;ldjfjasd;lfkj;lsajdfljaskldjf;jasdjf;askdjfkl;asjdfjaskdfj;askjdf;jaskl;dfjasj;dfkja;dsjf</p>
           </q-card-section>
 
           <q-separator />
@@ -67,7 +70,8 @@
 <style lang="sass">
 
 .q-card
-  width: 50%
+  width: 66%
+  border-radius: 12px
 
 </style>
 
@@ -78,7 +82,22 @@ export default {
   data () {
     return {
       checkbox: false,
-      info: false
+      info: false,
+      thumbStyle: {
+        right: '4px',
+        borderRadius: '5px',
+        backgroundColor: '#027be3',
+        width: '5px',
+        opacity: 0.75
+      },
+
+      barStyle: {
+        right: '2px',
+        borderRadius: '9px',
+        backgroundColor: '#027be3',
+        width: '9px',
+        opacity: 0.2
+      }
     }
   },
 

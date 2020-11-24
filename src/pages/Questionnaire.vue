@@ -21,17 +21,19 @@
 
           <template v-slot:navigation-icon="{ active, btnProps, onClick }">
 <!--            <q-btn v-if="active" size="xl" icon="home" color="yellow" flat round dense @click="onClick" />-->
-            <q-btn v-if="active" size="sm" :icon="btnProps.icon" flat round dense @click="onClick" />
-            <q-btn v-else size="xs" :icon="btnProps.icon" color="grey-5" flat round dense @click="onClick" />
+            <q-btn v-if="active" size="xs" :icon="btnProps.icon" flat round dense @click="onClick" />
+<!--            <q-btn v-else size="xs" :icon="btnProps.icon" color="grey-5" flat round dense @click="onClick" />-->
+            <q-btn v-else size="3px" :icon="btnProps.icon" color="grey-5" flat round dense @click="onClick" />
           </template>
 
           <q-carousel-slide name="style" class="column no-wrap flex-center"> <!--- v-for --->
-            <q-icon name="style" size="56px" />
 
             <div class="absolute-top custom-caption">
-              <div class="text-h2">Kopfumfang</div>
+              <div class="text-h2">Fragebogen</div>
 <!--              <div class="text-subtitle1">Geburt</div>-->
             </div>
+
+            <q-icon name="fas fa-tape" size="56px" class="q-mt-xl"/>
 
             <div class="q-mt-md text-center">
               <h3> Kopfumfang Geburt </h3>
@@ -46,9 +48,9 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="tv" class="column no-wrap flex-center">
-            <q-icon name="live_tv" size="56px" />
+            <q-icon name="fas fa-tape" size="56px" />
             <div class="q-mt-md text-center">
-            <h3> Kopfumfang 1. Jahr </h3>
+            <h3> Kopfumfang jetzt </h3>
 
             <q-input dark outlined bottom-slots v-model="text_q2" label="Kopfumfang" color="grey-1">
               <template v-slot:append>
@@ -59,9 +61,9 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="layers" class="column no-wrap flex-center">
-            <q-icon name="layers" size="56px" />
+            <q-icon name="fas fa-ruler" size="56px" />
             <div class="q-mt-md text-center">
-            <h3> Größe 1. Jahr </h3>
+            <h3> Größe Geburt </h3>
 
             <q-input dark outlined bottom-slots v-model="text_q3" label="Kopfumfang" color="grey-1">
               <template v-slot:append>
@@ -72,7 +74,7 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="map" class="column no-wrap flex-center">
-            <q-icon name="terrain" size="56px" />
+            <q-icon name="fas fa-ruler" size="56px" />
             <div class="q-mt-md text-center">
             <h3> Größe jetzt </h3>
 
@@ -82,12 +84,61 @@
               </template>
             </q-input>
             </div>
+          </q-carousel-slide>
 
-<!--            <q-btn unelevated color="secondary" label="Weiter" @click="submitQuestionnaire"/>-->
+          <q-carousel-slide name="q5" class="column no-wrap flex-center">
+            <q-icon name="fas fa-weight" size="56px" />
+            <div class="q-mt-md text-center">
+              <h3> Gewicht Geburt </h3>
 
+              <q-input dark outlined bottom-slots v-model="text_q5" label="Kopfumfang" color="grey-1">
+                <template v-slot:append>
+                  kg
+                </template>
+              </q-input>
+            </div>
+          </q-carousel-slide>
+
+          <q-carousel-slide name="q6" class="column no-wrap flex-center">
+            <q-icon name="fas fa-weight" size="56px" />
+            <div class="q-mt-md text-center">
+              <h3> Gewicht jetzt </h3>
+
+              <q-input dark outlined bottom-slots v-model="text_q6" label="Kopfumfang" color="grey-1">
+                <template v-slot:append>
+                  kg
+                </template>
+              </q-input>
+            </div>
           </q-carousel-slide>
 
           <q-carousel-slide name="form" class="column no-wrap flex-center">
+
+<!--            <q-icon name="layers" size="56px" />-->
+            <q-icon name="far fa-meh-blank" size="56px" />
+            <div class="row items-center ">
+            <h3 class="q-pr-md">Dismorphiezeichen</h3>
+              <q-btn round icon="far fa-question-circle" size="xs" @click="info = true"></q-btn>
+            </div>
+
+            <q-dialog v-model="info">
+              <q-card>
+                <q-card-section>
+                  <div class="text-h6">Dismorphiezeichen</div>
+                </q-card-section>
+
+                <q-separator />
+
+                  <q-img src="../assets/philtrum_guide.jpg"/>
+
+                <q-separator />
+
+                <q-card-actions align="right">
+                  <!--            <q-btn flat label="Decline" color="primary" v-close-popup />-->
+                  <q-btn flat label="Schließen" color="primary" v-close-popup />
+                </q-card-actions>
+              </q-card>
+            </q-dialog>
 
             <q-form
               @submit="onSubmit"
@@ -95,37 +146,81 @@
               class="q-gutter-md"
               autocomplete="off"
             >
-              <q-input
-                dark
-                filled
-                v-model="name"
-                label="Frage X *"
-                hint="Hinweis zur Eingabe"
-                lazy-rules
-                :rules="[ val => val && val.length > 0 || 'Bitte Wert eingeben']"
-              />
+<!--              <q-input-->
+<!--                dark-->
+<!--                filled-->
+<!--                v-model="name"-->
+<!--                label="Frage X *"-->
+<!--                hint="Hinweis zur Eingabe"-->
+<!--                lazy-rules-->
+<!--                :rules="[ val => val && val.length > 0 || 'Bitte Wert eingeben']"-->
+<!--              />-->
 
-              <q-input
-                dark
-                filled
-                type="number"
-                v-model="age"
-                label="Alter *"
-                lazy-rules
-                :rules="[
-          val => val !== null && val !== '' || 'Bitte Alter angeben',
-          val => val > 0 && val < 100 || 'Bitte Wert prüfen'
-        ]"
-              />
+<!--              <q-input-->
+<!--                dark-->
+<!--                filled-->
+<!--                type="number"-->
+<!--                v-model="age"-->
+<!--                label="Alter *"-->
+<!--                lazy-rules-->
+<!--                :rules="[-->
+<!--          val => val !== null && val !== '' || 'Bitte Alter angeben',-->
+<!--          val => val > 0 && val < 100 || 'Bitte Wert prüfen'-->
+<!--        ]"-->
+<!--              />-->
 
-              <q-toggle v-model="accept" color="accent" label="Ich habe alle Angaben geprüft" />
-
-              <div>
-                <q-btn label="Submit" color="accent" type="submit" />
-                <q-btn label="Reset" type="reset" color="accent" outline class="q-ml-sm" />
+              <div class="q-pa-md">
+                <q-option-group
+                  :options="options"
+                  label="Notifications"
+                  type="radio"
+                  v-model="group"
+                  dark
+                  @input="gotoNextSlide"
+                />
               </div>
+
+<!--              <q-toggle v-model="accept" color="accent" label="Ich habe alle Angaben geprüft" />-->
             </q-form>
 
+          </q-carousel-slide>
+
+          <q-carousel-slide name="q8" class="column no-wrap flex-center">
+            <q-icon name="far fa-calendar-alt" size="56px" />
+            <div class="q-mt-md text-center">
+              <h3> SSW Entbindung </h3>
+
+              <q-input dark outlined bottom-slots v-model="text_q8" label="SSW Entbindung" color="grey-1">
+                <template v-slot:append>
+                  SSW
+                </template>
+              </q-input>
+            </div>
+<!--            <div class="row justify-center" >-->
+<!--              &lt;!&ndash;                <q-btn label="Zurücksetzen" type="reset" color="accent" outline  />&ndash;&gt;-->
+<!--              &lt;!&ndash;                <q-btn label="Weiter" color="accent" type="submit" class="q-ml-sm" />&ndash;&gt;-->
+<!--              <q-btn label="Weiter" color="accent" type="submit" />-->
+
+<!--            </div>-->
+          </q-carousel-slide>
+
+          <q-carousel-slide name="q9" class="column no-wrap flex-center">
+            <q-icon name="far fa-calendar-alt" size="56px" />
+            <div class="q-mt-md text-center">
+              <h3> Anzahl funktioneller Störungen des ZNS </h3>
+
+              <q-slider dark v-model="text_q9" :min="0" :max="8" color="grey-1">
+                <template v-slot:append>
+                  SSW
+                </template>
+              </q-slider>
+            </div>
+            <div class="row justify-center q-pt-lg" >
+              <!--                <q-btn label="Zurücksetzen" type="reset" color="accent" outline  />-->
+              <!--                <q-btn label="Weiter" color="accent" type="submit" class="q-ml-sm" />-->
+              <q-btn label="Weiter" color="accent" @click="submitQuestionnaire" />
+
+            </div>
           </q-carousel-slide>
 
         </q-carousel>
@@ -161,9 +256,21 @@ export default {
       text_q2: '',
       text_q3: '',
       text_q4: '',
+      text_q5: '',
+      text_q6: '',
+      text_q7: '',
+      text_q8: '',
+      text_q9: '',
+      text_q10: '',
       name: null,
       age: null,
-      accept: false
+      accept: true,
+      info: false,
+      group: null,
+      options: [
+        { label: 'vorhanden', value: 'dismorphy', color: 'accent' },
+        { label: 'keine vorhanden', value: 'no_dismorphy', color: 'accent' }
+      ]
     }
   },
 
@@ -220,7 +327,7 @@ export default {
         .catch((error) => { this.notify(this.$q, error) })
 
       // TODO: remove the following line as soon as backend is available
-      this.$q.sessionStorage.set('risk', 'high')
+      this.$q.sessionStorage.set('risk', 'medium')
       this.$router.replace('result')
     },
 

@@ -30,13 +30,50 @@
 
                 <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>
 
-                <q-btn
+<!--                <q-btn-->
+<!--                  color="primary"-->
+<!--                  label="Logout"-->
+<!--                  push-->
+<!--                  size="sm"-->
+<!--                  v-close-popup-->
+<!--                />-->
+                <q-btn-dropdown
+                  split
+                  class="glossy"
                   color="primary"
-                  label="Logout"
-                  push
+                  label="Deutsch"
                   size="sm"
-                  v-close-popup
-                />
+                  @click="onMainClick"
+                >
+                  <q-list>
+                    <q-item clickable v-close-popup @click="onItemClick">
+                      <q-item-section avatar>
+                        <q-avatar icon="folder" color="primary" text-color="white" />
+                      </q-item-section>
+                      <q-item-section>
+                        <q-item-label>English</q-item-label>
+                        <q-item-label caption>February 22, 2016</q-item-label>
+                      </q-item-section>
+                      <q-item-section side>
+                        <q-icon name="info" color="amber" />
+                      </q-item-section>
+                    </q-item>
+
+                    <q-item clickable v-close-popup @click="onItemClick">
+                      <q-item-section avatar>
+                        <q-avatar icon="assignment" color="secondary" text-color="white" />
+                      </q-item-section>
+                      <q-item-section>
+                        <q-item-label>Deutsch</q-item-label>
+                        <q-item-label caption>February 22, 2016</q-item-label>
+                      </q-item-section>
+                      <q-item-section side>
+                        <q-icon name="info" color="amber" />
+                      </q-item-section>
+                    </q-item>
+                  </q-list>
+                </q-btn-dropdown>
+
               </div>
             </div>
           </q-menu>

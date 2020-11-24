@@ -18,10 +18,16 @@
           >
           <!--          style="height: 200px; max-width: 300px;"-->
 
-          <div v-for="n in 100" :key="n" class="q-pa-xs">
-            Diese Applikation dient dem Screening von FASD. Sie ersetzt keine Diagnose. <br>
-          </div>
+<!--          <div v-for="n in 100" :key="n" class="q-pa-xs">-->
+<!--            Diese Applikation dient dem Screening von FASD. Sie ersetzt keine Diagnose. <br>-->
+<!--          </div>-->
 
+          Diese Applikation dient dem Screening von FAS(D) und soll es den behandelnden Personen erleichtern, FASD zu erkennen und eine Diagnose in die Wege zu leiten.
+          Sie ersetzt keine Diagnose. Die Ergebnisse sollen vom behandelnden Arzt oder Psychologen ausgewertet werden.
+          <p/>
+          Wenn Sie die Applikation verwenden, bestätigen Sie, dass die Patienten oder deren Bevollmächtigte eingewilligt haben, am Screening teilzunehmen und medizinische Daten anonymisiert algorithmisch auswerten zu lassen.
+          <p/>
+          Jedes Testverfahren hat eine kleine Fehlerwahrscheinlichkeit, d.h. es kann zu falsch-positiven (gesunder Patient wird als betroffen erkannt) und falsch-negativen (vorliegender Fall wird nicht erkannt) Einschätzungen kommen.
         </q-scroll-area>
 
       </q-card-section>
@@ -32,7 +38,7 @@
       <q-separator inset/>
 
       <q-card-actions align="between">
-        <q-btn outline color="primary" @click="info = true">Weitere Informationen</q-btn>
+        <q-btn outline color="primary" @click="info = true">Weitere Infos</q-btn>
 <!--        <q-btn unelevated :disabled="!checkbox" color="primary" icon-right="fas fa-chevron-right" @click="gotoQuestionnaire">Starten</q-btn>-->
         <q-btn unelevated :disabled="!checkbox" color="primary" @click="gotoQuestionnaire">
           <div>
@@ -51,7 +57,14 @@
           <q-separator />
 
           <q-card-section style="max-height: 50vh" class="scroll">
-            <p v-for="n in 15" :key="n">Dies ist ein Test asdfasd;fkasdfj;asdkjfjas;ldjfjasd;lfkj;lsajdfljaskldjf;jasdjf;askdjfkl;asjdfjaskdfj;askjdf;jaskl;dfjasj;dfkja;dsjf</p>
+
+            <h5>What is FAS(D)?</h5>
+            <q-video src="https://www.youtube.com/embed/gVqYIgX1RIE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
+            <p/>
+            FAS is a permanent birth defect syndrome caused by maternal consumption of alcohol during pregnancy. The definition of the FAS has changed little since the 1970’s when the condition was first described and refined. The condition has been broadly characterized by prenatal and/or postnatal growth deficiency, a unique cluster of minor facial anomalies, and central nervous system (CNS) abnormalities. FAS is the leading known cause of mental retardation/developmental disabilities in the Western World and is entirely preventable. The prevalence of FAS is estimated to be 1 to 3 per 1,000 live births in the general population, but has been documented to be as high as 10 to 15 per 1,000 in some high-risk populations. The physical, cognitive, and behavioral deficits observed among individuals with prenatal alcohol exposure are not dichotomous, that is either normal or clearly abnormal. Rather, the outcomes, and the prenatal alcohol exposure, all range along separate continua from normal to clearly abnormal and distinctive. This full range of outcomes observed among individuals with prenatal alcohol exposure has come to be called Fetal Alcohol Spectrum Disorders (FASD). The term FASD is not intended for use as a clinical diagnosis. A patient would not receive adiagnosis of FASD, for the term is too broadly defined to be of clinical value. FAS, on the other hand, is a clinical diagnosis and is one of several alcohol-related diagnoses that fall under the umbrella of FASD.
+            <p/>
+<!--            <iframe width="560" height="315" src="https://www.youtube.com/embed/gVqYIgX1RIE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+
           </q-card-section>
 
           <q-separator />
@@ -70,7 +83,7 @@
 <style lang="sass">
 
 .q-card
-  width: 66%
+  //width: 66%
   border-radius: 12px
 
 </style>

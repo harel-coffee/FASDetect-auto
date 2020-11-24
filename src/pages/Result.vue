@@ -77,7 +77,7 @@
   </q-page>
 </template>
 
-<style lang="sass">
+<style lang="sass" scoped>
 
 .q-card
   width: 50%
@@ -114,17 +114,17 @@ export default {
       case 'low':
         this.risk_level = 'GERINGES'
         this.signal_color = 'green-7'
-        this.risk_icon = 'fas fa-check'
+        this.risk_icon = 'fas fa-check-circle'
         break
       case 'medium':
         this.risk_level = 'ERHÖHTES'
         this.signal_color = 'yellow-7'
-        this.risk_icon = 'fas fa-circle'
+        this.risk_icon = 'fas fa-exclamation-circle'
         break
       case 'high':
         this.risk_level = 'HOHES'
         this.signal_color = 'red-7'
-        this.risk_icon = 'fas fa-circle'
+        this.risk_icon = 'fas fa-exclamation-circle'
     }
   },
 

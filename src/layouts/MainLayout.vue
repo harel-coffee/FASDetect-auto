@@ -127,15 +127,19 @@ content-class="bg-grey-1"
   background-image: linear-gradient(to right, $primary, #1c6495)
 
 .bg-image
-  background-image: url(../assets/bg-network-schatten-75.jpg)
-  //background-image: url(../assets/bg-network-schatten-100.jpg)
-  //background-image: url(../assets/bg-network-schatten-100-dark.jpg)
-  //background-image: url(../assets/bg-network-schatten-100-light.jpg)
-  //background-image: url(../assets/bg-network-schwarzwert006.jpg)
+  //background-image: url(../assets/bg-network-schatten-75.jpg)
+  background-image: url(../assets/cool-bg2.png)
+  //background-image: url(/lego.jpg)
+
   //background-image: url(../assets/bg-network.jpg)
-  background-size: auto
-  background-repeat: no-repeat
-  background-attachment: fixed
+
+  // for network background
+  //background-size: auto
+  //background-repeat: no-repeat
+  //background-attachment: fixed
+
+  // for triangle geometric background
+  background-size: cover
 
 </style>
 

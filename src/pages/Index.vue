@@ -83,7 +83,7 @@
 <style lang="sass">
 
 .q-card
-  //width: 66%
+  width: 66%
   border-radius: 12px
 
 </style>

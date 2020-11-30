@@ -5,8 +5,8 @@
       <q-card-section>
         <div class="row">
         <div class="col-11">
-          <div class="text-h6">ERGEBNIS</div>
-          <div class="text-subtitle2">Nach dem Screening besteht ein {{ risk_level }} RISIKO, dass der Patient an FASD leidet.</div>
+          <div class="text-h4">ERGEBNIS</div>
+          <div class="text-h6">Nach dem Screening besteht ein {{ risk_level }} RISIKO, dass der Patient an FASD leidet.</div>
         </div>
         <div class="col-1">
           <q-icon :color=signal_color :name="risk_icon" size="xl" class="signal"></q-icon>
@@ -17,30 +17,42 @@
       <q-separator inset />
 
       <q-card-section>
+
+        <div class="row">
+
+          <div class="column col-2">
+
+            <q-img :src="risk_traffic_light_image" style="hight: 140px"></q-img>
+
+          </div>
+
+          <div class="column q-pl-lg">
         Es bestehen Auffälligkeiten in folgenden Bereichen: <p/>
 
-      <div class="q-gutter-sm q-pl-md">
-        <q-checkbox disable v-model="growth" label="Wachstum" />
-<!--        <q-checkbox disable v-model="face" label="Faciale Dysmorphie" />-->
-<!--        <q-checkbox disable v-model="cns" label="Zentrales Nervensystem" />-->
-<!--        <q-checkbox disable v-model="alcohol" label="Potentielle intrauterine Alkoholexposition" />-->
-      </div>
-      <div class="q-gutter-sm q-pl-md">
-        <q-checkbox v-model="face" @input="click(face)" disable label="Faciale Dysmorphie" />
-      </div>
-      <div class="q-gutter-sm q-pl-md">
-        <q-checkbox disable v-model="cns" label="Zentrales Nervensystem" />
-      </div>
-      <div class="q-gutter-sm q-pl-md">
-        <q-checkbox disable v-model="alcohol" label="Potentielle intrauterine Alkoholexposition" />
-      </div>
+          <div class="q-gutter-sm q-pl-md">
+            <q-checkbox disable v-model="growth" label="Wachstum" />
+    <!--        <q-checkbox disable v-model="face" label="Faciale Dysmorphie" />-->
+    <!--        <q-checkbox disable v-model="cns" label="Zentrales Nervensystem" />-->
+    <!--        <q-checkbox disable v-model="alcohol" label="Potentielle intrauterine Alkoholexposition" />-->
+          </div>
+          <div class="q-gutter-sm q-pl-md">
+            <q-checkbox v-model="face" @input="click(face)" disable label="Faciale Dysmorphie" />
+          </div>
+          <div class="q-gutter-sm q-pl-md">
+            <q-checkbox disable v-model="cns" label="Zentrales Nervensystem" />
+          </div>
+          <div class="q-gutter-sm q-pl-md">
+            <q-checkbox disable v-model="alcohol" label="Potentielle intrauterine Alkoholexposition" />
+          </div>
 
-        <p/>
-      <u>Was bedeutet dieses Ergebnis?</u> <p/>
+            <p/>
+          <u>Was bedeutet dieses Ergebnis?</u> <p/>
 
-        Sensitivität des Tests : 94% <br/>
-        Spezifizität des Tests : 78%<br/>
-        Zur Prävalenz von FAS(D) gibt es nur ungenaue Schätzungen, die von bis zu 5% der Bevölkerung ausgehen.
+            Sensitivität des Tests : 94% <br/>
+            Spezifizität des Tests : 78%<br/>
+            Zur Prävalenz von FAS(D) gibt es nur ungenaue Schätzungen, die von bis zu 5% der Bevölkerung ausgehen.
+          </div>
+        </div>
 
       </q-card-section>
 
@@ -80,7 +92,7 @@
 <style lang="sass" scoped>
 
 .q-card
-  width: 50%
+  width: 80%
 
 .signal
   display: inline-block
@@ -99,6 +111,7 @@ export default {
       risk_level: 'UNBEKANNTES',
       signal_color: 'white',
       risk_icon: '',
+      risk_traffic_light_image: '',
       growth: true,
       face: false,
       cns: false,
@@ -115,16 +128,19 @@ export default {
         this.risk_level = 'GERINGES'
         this.signal_color = 'green-7'
         this.risk_icon = 'fas fa-check-circle'
+        this.risk_traffic_light_image = 'green.png'
         break
       case 'medium':
         this.risk_level = 'ERHÖHTES'
         this.signal_color = 'yellow-7'
         this.risk_icon = 'fas fa-exclamation-circle'
+        this.risk_traffic_light_image = 'yellow.png'
         break
       case 'high':
         this.risk_level = 'HOHES'
         this.signal_color = 'red-7'
         this.risk_icon = 'fas fa-exclamation-circle'
+        this.risk_traffic_light_image = 'red.png'
     }
   },
 

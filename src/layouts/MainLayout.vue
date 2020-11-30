@@ -17,8 +17,8 @@
             <div class="row no-wrap q-pa-md">
               <div class="column">
                 <div class="text-h6 q-mb-md">Settings</div>
-                <q-toggle v-model="mobileData" label="Use Mobile Data" />
-                <q-toggle v-model="bluetooth" label="Bluetooth" />
+                <q-toggle v-model="mobileData" label="Algorithm 1" />
+                <q-toggle v-model="bluetooth" label="Algorithm 2" />
               </div>
 
               <q-separator vertical inset class="q-mx-lg" />
@@ -79,8 +79,8 @@
           </q-menu>
 
         </q-btn>
-      <router-link to="/" tag="div" >
-        <q-toolbar-title >
+      <router-link to="/" tag="div">
+        <q-toolbar-title>
           <b>FASDetect</b>
         </q-toolbar-title>
       </router-link>
@@ -120,7 +120,7 @@ content-class="bg-grey-1"
 <style lang="sass">
 
 .router-link-active
-  margin-left: 43%
+  margin: auto
 
 .q-header
   //background-image: linear-gradient(to left, #036cab, #013250)
@@ -128,7 +128,7 @@ content-class="bg-grey-1"
 
 .bg-image
   //background-image: url(../assets/bg-network-schatten-75.jpg)
-  background-image: url(../assets/cool-bg2.png)
+  background-image: url(/cool-bg2-light-2.png)
   //background-image: url(/lego.jpg)
 
   //background-image: url(../assets/bg-network.jpg)

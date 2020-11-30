@@ -327,7 +327,7 @@ export default {
         .catch((error) => { this.notify(this.$q, error) })
 
       // TODO: remove the following line as soon as backend is available
-      this.$q.sessionStorage.set('risk', 'high')
+      this.$q.sessionStorage.set('risk', 'medium')
       this.$router.replace('result')
     },
 

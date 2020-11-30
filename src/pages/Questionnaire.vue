@@ -209,7 +209,7 @@
             <div class="q-mt-md text-center">
               <h3> Anzahl funktioneller Störungen des ZNS </h3>
 
-              <q-slider dark v-model="text_q9" :min="0" :max="8" color="grey-1">
+              <q-slider dark v-model="text_q9" :min="0" :max="8" color="accent" label label-always markers>
                 <template v-slot:append>
                   SSW
                 </template>
@@ -229,11 +229,11 @@
 
 <style lang="sass" scoped>
 .q-carousel
-  width: 66%
-  height: 100%
+  width: 80%
+  height: 80vh
 
 .rounded-borders
-  border-radius: 16px
+  border-radius: 32px
 
 .custom-caption
   text-align: center

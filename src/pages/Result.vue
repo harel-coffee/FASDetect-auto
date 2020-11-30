@@ -98,6 +98,7 @@
 
 .q-card
   width: 80%
+  //height: 80vh
 
 .signal
   display: inline-block

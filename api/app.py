@@ -46,9 +46,10 @@ def predict_instance():
   clf = model['model']
   desc = model['description']
 
+  scaled_features = scaler.transform(features)
   
   return jsonify(
       description = desc,
-      predict = clf.predict(features).tolist(),
-      predict_proba = clf.predict_proba(features).tolist(),
+      predict = clf.predict(scaled_features).tolist(),
+      predict_proba = clf.predict_proba(scaled_features).tolist(),
   ) 

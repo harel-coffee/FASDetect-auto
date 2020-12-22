@@ -134,19 +134,21 @@ export default {
         this.risk_level = 'GERINGES'
         this.signal_color = 'green-7'
         this.risk_icon = 'fas fa-check-circle'
-        // this.risk_traffic_light_image = 'green.png'
         break
       case 'medium':
         this.risk_level = 'ERHÖHTES'
         this.signal_color = 'yellow-7'
         this.risk_icon = 'fas fa-exclamation-circle'
-        // this.risk_traffic_light_image = 'yellow.png'
         break
       case 'high':
         this.risk_level = 'HOHES'
         this.signal_color = 'red-7'
         this.risk_icon = 'fas fa-exclamation-circle'
-        // this.risk_traffic_light_image = 'red.png'
+        break
+      default:
+        this.risk_level = 'ERHÖHTES'
+        this.signal_color = 'yellow-7'
+        this.risk_icon = 'fas fa-exclamation-circle'
     }
   },
 

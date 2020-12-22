@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify, json
+from flask_cors import CORS
+
 import pickle
 # import sklearn
 # import ligthgbm
@@ -6,11 +8,12 @@ import pickle
 import numpy as np
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
   return 'Available endpoints: \nmodels : GET list of available trained models\npredict : predict instance'
-  
+
 
 # @app.route('/summary')
 #def summary():
@@ -21,35 +24,40 @@ def index():
 #        mimetype='application/json'
 #    )
 #    return response
-  
+
 @app.route('/models')
 def return_available_models():
-  return 'Currently, there are no models available'
+  return 'Currently, there are no model alternatives available'
 
 @app.route('/model-details')
 def return_model_details():
   return 'Details for specific models   (sensitivity, specificity, description, ...)'
-  
-@app.route('/predict')
+
+@app.route('/predict', methods = ['GET', 'POST'])
 def predict_instance():
 
-  req_data = request.get_json()
+#   print('REQUEST HEADERS\m', request.headers)
+#   print('REQUEST DATA\m', request.data)
+#   print('REQUEST FORM\m', request.form)
+#   print('REQUEST JSON\m', request.json)
 
-  models = req_data['models']
+  req_data = request.get_json()
   features = np.array(req_data['features']).reshape(1, -1)
 
 # unpickle specified models and their corresponding feature scalers
 
   model = pickle.load( open( "gbm_test.p", "rb" ))
 
-  scaler = model['scaler']
+
+  if model['scaler']:
+    scaler = model['scaler']
+    features = scaler.transform(features)
+
   clf = model['model']
   desc = model['description']
 
-  scaled_features = scaler.transform(features)
-  
   return jsonify(
       description = desc,
-      predict = clf.predict(scaled_features).tolist(),
-      predict_proba = clf.predict_proba(scaled_features).tolist(),
-  ) 
+      predict = clf.predict(features).tolist()[0],
+      predict_proba = clf.predict_proba(features).tolist()[0],
+  )

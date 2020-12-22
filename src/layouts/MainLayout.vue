@@ -129,6 +129,7 @@ content-class="bg-grey-1"
 .bg-image
   //background-image: url(../assets/bg-network-schatten-75.jpg)
   background-image: url(/cool-bg2-light-2.png)
+  //background-image: url(/cool-bg2-light.png)
   //background-image: url(/lego.jpg)
 
   //background-image: url(../assets/bg-network.jpg)

@@ -129,26 +129,18 @@ export default {
   mounted () {
     const risk = this.$q.sessionStorage.getItem('risk')
 
-    switch (risk) {
-      case 'low':
-        this.risk_level = 'GERINGES'
-        this.signal_color = 'green-7'
-        this.risk_icon = 'fas fa-check-circle'
-        break
-      case 'medium':
-        this.risk_level = 'ERHÖHTES'
-        this.signal_color = 'yellow-7'
-        this.risk_icon = 'fas fa-exclamation-circle'
-        break
-      case 'high':
-        this.risk_level = 'HOHES'
-        this.signal_color = 'red-7'
-        this.risk_icon = 'fas fa-exclamation-circle'
-        break
-      default:
-        this.risk_level = 'ERHÖHTES'
-        this.signal_color = 'yellow-7'
-        this.risk_icon = 'fas fa-exclamation-circle'
+    if (risk <= 0.4) {
+      this.risk_level = 'GERINGES'
+      this.signal_color = 'green-7'
+      this.risk_icon = 'fas fa-check-circle'
+    } else if (risk > 0.4 && risk < 0.75) {
+      this.risk_level = 'ERHÖHTES'
+      this.signal_color = 'yellow-7'
+      this.risk_icon = 'fas fa-exclamation-circle'
+    } else if (risk >= 0.75) {
+      this.risk_level = 'HOHES'
+      this.signal_color = 'red-7'
+      this.risk_icon = 'fas fa-exclamation-circle'
     }
   },
 

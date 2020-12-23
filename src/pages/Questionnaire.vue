@@ -317,7 +317,7 @@ export default {
       quasar.notify({
         color: 'negative',
         position: 'bottom',
-        message: 'Backend-Fehler ' + error,
+        message: 'Backend ' + error,
         icon: 'report_problem'
       })
     },
@@ -341,8 +341,14 @@ export default {
       // })
         .then((response) => {
           if (response.status === 200) {
-            this.$q.sessionStorage.set('risk', response.data.predict_proba[1])
+            this.$q.sessionStorage.set('risk', response.data.predict_proba)
             this.$router.replace('result')
+            this.$q.notify({
+              color: 'green-4',
+              textColor: 'white',
+              icon: 'cloud_done',
+              message: 'Eingaben abgesendet'
+            })
           }
         })
         .catch((error) => { this.notify(this.$q, error) })

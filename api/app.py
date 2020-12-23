@@ -59,5 +59,5 @@ def predict_instance():
   return jsonify(
       description = desc,
       predict = clf.predict(features).tolist()[0],
-      predict_proba = clf.predict_proba(features).tolist()[0],
+      predict_proba = clf.predict_proba(features).tolist()[0][1],
   )

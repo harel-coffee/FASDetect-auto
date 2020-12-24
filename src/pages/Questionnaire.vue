@@ -347,7 +347,7 @@ export default {
               color: 'green-4',
               textColor: 'white',
               icon: 'cloud_done',
-              message: 'Eingaben abgesendet'
+              message: 'Eingaben abgesendet ' + response.data.predict_proba
             })
           }
         })

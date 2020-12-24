@@ -48,13 +48,13 @@
           <u>Was bedeutet dieses Ergebnis?</u> <p/>
 
             Sensitivität des Tests : 94% <br/>
-            Spezifizität des Tests : 78%<br/>
+            Spezifität des Tests : 78%<br/>
             Zur Prävalenz von FAS(D) gibt es nur ungenaue Schätzungen, die von bis zu 5% der Bevölkerung ausgehen.
             </i>
           </div>
 
           <div class="col-1">
-            <q-icon :color=signal_color :name="risk_icon" size="12em" class="signal"></q-icon>
+            <q-icon :color=signal_color :name="risk_icon" size="12vw" class="signal"></q-icon>
           </div>
 
         </div>
@@ -129,11 +129,11 @@ export default {
   mounted () {
     const risk = this.$q.sessionStorage.getItem('risk')
 
-    if (risk <= 0.4) {
+    if (risk < 0.5) {
       this.risk_level = 'GERINGES'
       this.signal_color = 'green-7'
       this.risk_icon = 'fas fa-check-circle'
-    } else if (risk > 0.4 && risk < 0.75) {
+    } else if (risk >= 0.5 && risk < 0.75) {
       this.risk_level = 'ERHÖHTES'
       this.signal_color = 'yellow-7'
       this.risk_icon = 'fas fa-exclamation-circle'

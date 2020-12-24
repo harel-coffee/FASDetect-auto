@@ -1,19 +1,29 @@
 from flask import Flask, request, jsonify, json
 from flask_cors import CORS
-
+import glob
 import pickle
-# import sklearn
-# import ligthgbm
-# import pandas as pd
 import numpy as np
 
 app = Flask(__name__)
 CORS(app)
 
+model_dir = 'models/'
+models = []
+files = []
+
+def load_models():
+  global files
+  files = glob.glob(model_dir+'*')
+  for file in files:
+    print ("Loading ", file)
+    models.append(pickle.load( open( file, "rb" )))
+    print (file, "loaded")
+
+load_models()
+
 @app.route('/')
 def index():
   return 'Available endpoints: \nmodels : GET list of available trained models\npredict : predict instance'
-
 
 # @app.route('/summary')
 #def summary():
@@ -25,9 +35,11 @@ def index():
 #    )
 #    return response
 
+# Refresh model directory, load all models and return list of models
 @app.route('/models')
 def return_available_models():
-  return 'Currently, there are no model alternatives available'
+  load_models()
+  return dict(enumerate(files))
 
 @app.route('/model-details')
 def return_model_details():
@@ -46,18 +58,21 @@ def predict_instance():
 
 # unpickle specified models and their corresponding feature scalers
 
-  model = pickle.load( open( "gbm_test.p", "rb" ))
+#   model = pickle.load( open( "models/LGBMClassifier_20201223-21h37m52s.p", "rb" ))
+  model = models[0]
 
+  if model["scaler"]:
+    features = model["scaler"].transform(features)
 
-  if model['scaler']:
-    scaler = model['scaler']
-    features = scaler.transform(features)
-
-  clf = model['model']
-  desc = model['description']
+  clf = model["model"]
 
   return jsonify(
-      description = desc,
+      desc = model["desc"],
       predict = clf.predict(features).tolist()[0],
       predict_proba = clf.predict_proba(features).tolist()[0][1],
+      scores = model["scores"],
+      feature_names = model["feature_names"],
+      name = model["name"],
+      misc = model["misc"],
+      feature_importances = clf.feature_importances_.tolist()
   )

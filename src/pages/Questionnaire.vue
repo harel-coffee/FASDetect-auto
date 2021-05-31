@@ -228,7 +228,7 @@
             <div class="row justify-center q-pt-lg" >
               <!--                <q-btn label="Zurücksetzen" type="reset" color="accent" outline  />-->
               <!--                <q-btn label="Weiter" color="accent" type="submit" class="q-ml-sm" />-->
-              <q-btn label="Weiter" color="accent" @click="submitQuestionnaire" />
+              <q-btn label="Weiter" rounded color="accent" @click="submitQuestionnaire" />
             </div>
           </q-carousel-slide>
 
@@ -341,7 +341,7 @@ export default {
       // })
         .then((response) => {
           if (response.status === 200) {
-            this.$q.sessionStorage.set('risk', response.data.predict_proba)
+            this.$q.sessionStorage.set('prediction', response.data)
             this.$router.replace('result')
             this.$q.notify({
               color: 'green-4',

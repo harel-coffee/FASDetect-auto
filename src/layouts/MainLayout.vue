@@ -24,11 +24,11 @@
               <q-separator vertical inset class="q-mx-lg" />
 
               <div class="column items-center">
-                <q-avatar size="72px">
-                  <img src="https://cdn.quasar.dev/img/avatar4.jpg">
-                </q-avatar>
+<!--                <q-avatar size="72px">-->
+<!--                  <img src="https://cdn.quasar.dev/img/avatar4.jpg">-->
+<!--                </q-avatar>-->
 
-                <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>
+<!--                <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>-->
 
 <!--                <q-btn-->
 <!--                  color="primary"-->
@@ -39,6 +39,7 @@
 <!--                />-->
                 <q-btn-dropdown
                   split
+                  rounded
                   class="glossy"
                   color="primary"
                   label="Deutsch"
@@ -52,7 +53,7 @@
                       </q-item-section>
                       <q-item-section>
                         <q-item-label>English</q-item-label>
-                        <q-item-label caption>February 22, 2016</q-item-label>
+<!--                        <q-item-label caption>February 22, 2016</q-item-label>-->
                       </q-item-section>
                       <q-item-section side>
                         <q-icon name="info" color="amber" />
@@ -65,7 +66,7 @@
                       </q-item-section>
                       <q-item-section>
                         <q-item-label>Deutsch</q-item-label>
-                        <q-item-label caption>February 22, 2016</q-item-label>
+<!--                        <q-item-label caption>February 22, 2016</q-item-label>-->
                       </q-item-section>
                       <q-item-section side>
                         <q-icon name="info" color="amber" />
@@ -128,7 +129,10 @@ content-class="bg-grey-1"
 
 .bg-image
   //background-image: url(../assets/bg-network-schatten-75.jpg)
-  background-image: url(/cool-bg2-light-2.png)
+
+  //background-image: url(/cool-bg2-light-2.png)
+  background-image: url(/cool-bg3-light.png)
+
   //background-image: url(/cool-bg2-light.png)
   //background-image: url(/lego.jpg)
 

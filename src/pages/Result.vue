@@ -47,8 +47,8 @@
             <i>
           <u>Was bedeutet dieses Ergebnis?</u> <p/>
 
-            Sensitivität des Tests : 94% <br/>
-            Spezifität des Tests : 78%<br/>
+            Sensitivität des Tests : {{Math.round((this.$q.sessionStorage.getItem('prediction').scores.fasd.recall + Number.EPSILON) * 100) / 100}}%<br/>
+            Spezifität des Tests : {{Math.round((this.$q.sessionStorage.getItem('prediction').scores.adhs.recall + Number.EPSILON) * 100) / 100}}%<br/>
             Zur Prävalenz von FAS(D) gibt es nur ungenaue Schätzungen, die von bis zu 5% der Bevölkerung ausgehen.
             </i>
           </div>
@@ -64,8 +64,8 @@
       <q-separator inset/>
 
       <q-card-actions align="between" class="q-pa-md q-pl-xl q-pr-xl">
-        <q-btn outline color="primary" @click="info = true">Details</q-btn>
-        <q-btn unelevated color="primary" to="/">Beenden</q-btn>
+        <q-btn outline rounded color="primary" @click="info = true">Details</q-btn>
+        <q-btn unelevated rounded color="primary" to="/">Beenden</q-btn>
       </q-card-actions>
 
       <q-dialog v-model="info">
@@ -84,7 +84,7 @@
 
           <q-card-actions align="right">
             <!--            <q-btn flat label="Decline" color="primary" v-close-popup />-->
-            <q-btn flat label="Schließen" color="primary" v-close-popup />
+            <q-btn flat rounded label="Schließen" color="primary" v-close-popup />
           </q-card-actions>
         </q-card>
       </q-dialog>
@@ -121,13 +121,13 @@ export default {
       growth: true,
       face: false,
       cns: false,
-      alcohol: true,
+      alcohol: false,
       info: false
     }
   },
 
   mounted () {
-    const risk = this.$q.sessionStorage.getItem('risk')
+    const risk = this.$q.sessionStorage.getItem('prediction').predict_proba
 
     if (risk < 0.5) {
       this.risk_level = 'GERINGES'

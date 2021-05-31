@@ -44,9 +44,9 @@
       <q-separator inset/>
 
       <q-card-actions align="between" class="q-pa-md q-pl-xl q-pr-xl">
-        <q-btn outline color="primary" size="md" @click="info = true">Weitere Infos</q-btn>
+        <q-btn outline rounded color="primary" size="md" @click="info = true">Weitere Infos</q-btn>
 <!--        <q-btn unelevated :disabled="!checkbox" color="primary" icon-right="fas fa-chevron-right" @click="gotoQuestionnaire">Starten</q-btn>-->
-        <q-btn unelevated :disabled="!checkbox" color="primary" size="md" @click="gotoQuestionnaire">
+        <q-btn unelevated rounded :disabled="!checkbox" color="primary" size="md" @click="gotoQuestionnaire">
           <div>
             Starten
           </div>
@@ -81,7 +81,7 @@
 
           <q-card-actions align="right">
 <!--            <q-btn flat label="Decline" color="primary" v-close-popup />-->
-            <q-btn flat label="Schließen" color="primary" v-close-popup />
+            <q-btn flat rounded label="Schließen" color="primary" v-close-popup />
           </q-card-actions>
         </q-card>
       </q-dialog>

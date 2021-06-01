@@ -8,7 +8,7 @@
           flat
           dense
           round
-          icon="fas fa-cog"
+          icon="fas fa-globe"
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         >
@@ -104,12 +104,9 @@ export default {
     return {
       leftDrawerOpen: false,
       // essentialLinks: linksData
-      lang: this.$i18n.locale,
-      // lang: 'de',
+      lang: this.$i18n.locale.split('-')[0],
       langOptions: [
         { value: 'en', label: 'English' },
-        // { value: 'en-us', label: 'English' },
-        // { value: 'de-de', label: 'Deutsch' },
         { value: 'de', label: 'Deutsch' }
       ]
     }

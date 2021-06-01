@@ -28,26 +28,25 @@
 
           <q-carousel-slide name="0" class="column no-wrap flex-center"> <!--- v-for --->
             <div class="absolute-top custom-caption">
-              <div class="text-h2">Fragebogen</div>
-<!--              <div class="text-subtitle1">Geburt</div>-->
+              <div class="text-h2">{{$t('questionnaire')}}</div>
             </div>
             <q-icon name="fas fa-tape" size="56px" class="q-mt-xl"/>
             <div class="q-mt-md text-center">
-              <h3> Geburtsgewicht (Perzentil)</h3>
-              <q-input dark outlined bottom-slots v-model="features[0]" label="Geburtsgewicht" color="grey-1" autofocus>
+              <h3>{{$t('gku')}}</h3>
+              <q-input dark outlined bottom-slots v-model="features[0]" :label="$t('gku_label')" color="grey-1" autofocus>
 <!--                <template v-slot:append>-->
-<!--                  cm-->
+<!--                  z-->
 <!--                </template>-->
               </q-input>
             </div>
           </q-carousel-slide>
 
           <q-carousel-slide name="1" class="column no-wrap flex-center">
-            <q-icon name="fas fa-tape" size="56px" />
+            <q-icon name="fas fa-ruler" size="56px" />
             <div class="q-mt-md text-center">
-            <h3> Geburtslänge (Perzentil) </h3>
+            <h3>{{$t('gl')}}</h3>
 
-            <q-input dark outlined bottom-slots v-model="features[1]" label="Geburtslänge" color="grey-1">
+            <q-input dark outlined bottom-slots v-model="features[1]" :label="$t('gl_label')" color="grey-1">
 <!--              <template v-slot:append>-->
 <!--                cm-->
 <!--              </template>-->
@@ -56,71 +55,34 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="2" class="column no-wrap flex-center">
-            <q-icon name="far fa-calendar-alt" size="56px" />
+            <q-icon name="far fa-lightbulb" size="56px" />
             <div class="q-mt-md text-center">
-              <h3> Anzahl funktioneller Störungen des ZNS </h3>
-
-              <q-slider dark v-model="features[2]" :min="0" :max="8" color="accent" label label-always markers>
-                <template v-slot:append>
-                  SSW
-                </template>
-              </q-slider>
+              <h3> {{$t('iq')}} </h3>
             </div>
+            <q-form
+              @submit="onSubmit"
+              @reset="onReset"
+              class="q-gutter-md"
+              autocomplete="off"
+            >
+              <div class="q-pa-md">
+                <q-option-group
+                  :options="options"
+                  label="Notifications"
+                  type="radio"
+                  v-model="features[2]"
+                  dark
+                  @input="gotoNextSlide"
+                />
+              </div>
+            </q-form>
           </q-carousel-slide>
-
-<!--          <q-carousel-slide name="layers" class="column no-wrap flex-center">-->
-<!--            <q-icon name="fas fa-ruler" size="56px" />-->
-<!--            <div class="q-mt-md text-center">-->
-<!--            <h3> Größe Geburt </h3>-->
-<!--            <q-input dark outlined bottom-slots v-model="features[2]" label="Kopfumfang" color="grey-1">-->
-<!--              <template v-slot:append>-->
-<!--                cm-->
-<!--              </template>-->
-<!--            </q-input>-->
-<!--            </div>-->
-<!--          </q-carousel-slide>-->
-
-<!--          <q-carousel-slide name="map" class="column no-wrap flex-center">-->
-<!--            <q-icon name="fas fa-ruler" size="56px" />-->
-<!--            <div class="q-mt-md text-center">-->
-<!--            <h3> Größe jetzt </h3>-->
-<!--            <q-input dark outlined bottom-slots v-model="features[3]" label="Kopfumfang" color="grey-1">-->
-<!--              <template v-slot:append>-->
-<!--                cm-->
-<!--              </template>-->
-<!--            </q-input>-->
-<!--            </div>-->
-<!--          </q-carousel-slide>-->
-
-<!--          <q-carousel-slide name="q5" class="column no-wrap flex-center">-->
-<!--            <q-icon name="fas fa-weight" size="56px" />-->
-<!--            <div class="q-mt-md text-center">-->
-<!--              <h3> Gewicht Geburt </h3>-->
-<!--              <q-input dark outlined bottom-slots v-model="features[4]" label="Kopfumfang" color="grey-1">-->
-<!--                <template v-slot:append>-->
-<!--                  kg-->
-<!--                </template>-->
-<!--              </q-input>-->
-<!--            </div>-->
-<!--          </q-carousel-slide>-->
-
-<!--          <q-carousel-slide name="q6" class="column no-wrap flex-center">-->
-<!--            <q-icon name="fas fa-weight" size="56px" />-->
-<!--            <div class="q-mt-md text-center">-->
-<!--              <h3> Gewicht jetzt </h3>-->
-<!--              <q-input dark outlined bottom-slots v-model="features[5]" label="Kopfumfang" color="grey-1">-->
-<!--                <template v-slot:append>-->
-<!--                  kg-->
-<!--                </template>-->
-<!--              </q-input>-->
-<!--            </div>-->
-<!--          </q-carousel-slide>-->
 
           <q-carousel-slide name="3" class="column no-wrap flex-center">
             <!--            <q-icon name="layers" size="56px" />-->
             <q-icon name="far fa-meh-blank" size="56px" />
             <div class="row items-center ">
-              <h3 class="q-pr-md">Psychische Komorbidität vorhanden?</h3>
+              <h3 class="q-pr-md">{{$t('dist')}}</h3>
             </div>
             <q-form
               @submit="onSubmit"
@@ -142,9 +104,9 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="4" class="column no-wrap flex-center">
-            <q-icon name="far fa-meh-blank" size="56px" />
+            <q-icon name="fas fa-brain" size="56px" />
             <div class="row items-center ">
-              <h3 class="q-pr-md">Fehlsichtigkeit?</h3>
+              <h3 class="q-pr-md">{{$t('memory')}}</h3>
             </div>
             <q-form
               @submit="onSubmit"
@@ -167,9 +129,9 @@
 
           <q-carousel-slide name="5" class="column no-wrap flex-center">
 <!--            <q-icon name="layers" size="56px" />-->
-            <q-icon name="far fa-meh-blank" size="56px" />
+            <q-icon name="fas fa-bed" size="56px" />
             <div class="row items-center ">
-            <h3 class="q-pr-md">Schlafstörungen?</h3>
+            <h3 class="q-pr-md">{{$t('sleep')}}</h3>
 <!--              <q-btn round icon="far fa-question-circle" size="xs" @click="info = true"></q-btn>-->
             </div>
 <!--            <q-dialog v-model="info">-->
@@ -228,7 +190,7 @@
             <div class="row justify-center q-pt-lg" >
               <!--                <q-btn label="Zurücksetzen" type="reset" color="accent" outline  />-->
               <!--                <q-btn label="Weiter" color="accent" type="submit" class="q-ml-sm" />-->
-              <q-btn label="Weiter" rounded color="accent" @click="submitQuestionnaire" />
+              <q-btn :label="$t('next_btn')" rounded color="accent" @click="submitQuestionnaire" />
             </div>
           </q-carousel-slide>
 
@@ -280,12 +242,12 @@ export default {
       navigation: true,
       navPos: 'right',
       slide: '0',
-      features: ['', '', 0, '', '', ''],
+      features: ['', '', '', '', '', ''],
       accept: true,
       info: false,
       options: [
-        { label: 'Ja', value: 1, color: 'accent' },
-        { label: 'Nein', value: 0, color: 'accent' }
+        { label: this.$t('yes'), value: 1, color: 'accent' },
+        { label: this.$t('no'), value: 0, color: 'accent' }
       ]
     }
   },

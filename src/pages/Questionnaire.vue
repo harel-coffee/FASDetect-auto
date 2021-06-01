@@ -285,6 +285,12 @@ export default {
     },
 
     submitQuestionnaire () {
+      for (let i = 0; i < this.features.length; i++) {
+        if (this.features[i] === '') {
+          this.features[i] = 'nan'
+        }
+      }
+
       const data = {
         features: this.features
       }

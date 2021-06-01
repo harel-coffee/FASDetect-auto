@@ -61,9 +61,6 @@ def predict_instance():
 #   model = pickle.load( open( "models/LGBMClassifier_20201223-21h37m52s.p", "rb" ))
   model = models[0]
 
-  if model["scaler"]:
-    features = model["scaler"].transform(features)
-
   clf = model["model"]
 
   return jsonify(
@@ -74,5 +71,5 @@ def predict_instance():
       feature_names = model["feature_names"],
       name = model["name"],
       misc = model["misc"],
-      feature_importances = clf.feature_importances_.tolist()
+#       feature_importances = clf.feature_importances_.tolist()
   )

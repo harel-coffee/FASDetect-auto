@@ -43,9 +43,9 @@
 
           <q-card-section style="max-height: 50vh" class="scroll">
             <p></p>
-            Sensitivität des Tests : {{Math.round((this.$q.sessionStorage.getItem('prediction').scores.fasd.recall + Number.EPSILON) * 100) / 100}}%<br/>
-            Spezifität des Tests : {{Math.round((this.$q.sessionStorage.getItem('prediction').scores.adhs.recall + Number.EPSILON) * 100) / 100}}%<br/>
-            Zur Prävalenz von FAS(D) gibt es nur ungenaue Schätzungen, die von bis zu 5% der Bevölkerung ausgehen.
+            Sensitivität des Tests : 90%<br/>
+            Spezifität des Tests : 75%<br/>
+            Präzision (positiver prädiktiver Wert): 84%
           </q-card-section>
 
           <q-separator />

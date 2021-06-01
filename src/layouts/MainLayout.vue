@@ -108,6 +108,8 @@ export default {
       // lang: 'de',
       langOptions: [
         { value: 'en', label: 'English' },
+        // { value: 'en-us', label: 'English' },
+        // { value: 'de-de', label: 'Deutsch' },
         { value: 'de', label: 'Deutsch' }
       ]
     }

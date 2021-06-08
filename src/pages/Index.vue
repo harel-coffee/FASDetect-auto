@@ -32,7 +32,7 @@
       </q-card-section>
 
       <div class="q-gutter-sm text-center">
-        <q-checkbox v-model="checkbox" :label="$t('accept')" />
+        <q-checkbox v-model="checkbox" :label="$t('accept')" color="accent"/>
       </div>
       <q-separator inset/>
 

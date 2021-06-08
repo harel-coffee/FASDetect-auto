@@ -10,10 +10,11 @@
           padding
           :vertical="vertical"
           arrows
+          control-color="accent"
           ref="carousel"
           :navigation="navigation"
           :navigation-position="navPos"
-          class="bg-primary text-white rounded-borders"
+          class="bg-white rounded-borders"
           v-on:keydown.enter="gotoNextSlide"
           v-on:wheel="scrollSlides"
 
@@ -21,19 +22,19 @@
 
           <template v-slot:navigation-icon="{ active, btnProps, onClick }">
 <!--            <q-btn v-if="active" size="xl" icon="home" color="yellow" flat round dense @click="onClick" />-->
-            <q-btn v-if="active" size="xs" :icon="btnProps.icon" flat round dense @click="onClick" />
+            <q-btn v-if="active" size="xs" :icon="btnProps.icon" color="accent" flat round dense @click="onClick" />
 <!--            <q-btn v-else size="xs" :icon="btnProps.icon" color="grey-5" flat round dense @click="onClick" />-->
-            <q-btn v-else size="3px" :icon="btnProps.icon" color="grey-5" flat round dense @click="onClick" />
+            <q-btn v-else size="3px" :icon="btnProps.icon" color="grey-6" flat round dense @click="onClick" />
           </template>
 
           <q-carousel-slide name="0" class="column no-wrap flex-center"> <!--- v-for --->
             <div class="absolute-top custom-caption">
-              <div class="text-h2">{{$t('questionnaire')}}</div>
+              <div class="text-h2" style="font-weight: 400">{{$t('questionnaire')}}</div>
             </div>
-            <q-icon name="fas fa-tape" size="56px" class="q-mt-xl"/>
+            <q-icon name="fas fa-tape" size="56px" color="grey-5" class="q-mt-xl"/>
             <div class="q-mt-md text-center">
               <h3>{{$t('gku')}}</h3>
-              <q-input dark outlined bottom-slots v-model="features[0]" :label="$t('gku_label')" color="grey-1" autofocus>
+              <q-input outlined bottom-slots v-model="features[0]" :label="$t('gku_label')" color="accent" autofocus>
 <!--                <template v-slot:append>-->
 <!--                  z-->
 <!--                </template>-->
@@ -42,11 +43,11 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="1" class="column no-wrap flex-center">
-            <q-icon name="fas fa-ruler" size="56px" />
+            <q-icon name="fas fa-ruler" color="grey-5" size="56px" />
             <div class="q-mt-md text-center">
             <h3>{{$t('gl')}}</h3>
 
-            <q-input dark outlined bottom-slots v-model="features[1]" :label="$t('gl_label')" color="grey-1">
+            <q-input outlined bottom-slots v-model="features[1]" :label="$t('gl_label')" color="accent">
 <!--              <template v-slot:append>-->
 <!--                cm-->
 <!--              </template>-->
@@ -55,7 +56,7 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="2" class="column no-wrap flex-center">
-            <q-icon name="far fa-lightbulb" size="56px" />
+            <q-icon name="fas fa-brain" size="56px" color="grey-5"/>
             <div class="q-mt-md text-center">
               <h3> {{$t('iq')}} </h3>
             </div>
@@ -71,7 +72,6 @@
                   label="Notifications"
                   type="radio"
                   v-model="features[2]"
-                  dark
                   @input="gotoNextSlide"
                 />
               </div>
@@ -80,7 +80,7 @@
 
           <q-carousel-slide name="3" class="column no-wrap flex-center">
             <!--            <q-icon name="layers" size="56px" />-->
-            <q-icon name="far fa-meh-blank" size="56px" />
+            <q-icon name="fas fa-people-arrows" color="grey-5" size="56px" />
             <div class="row items-center ">
               <h3 class="q-pr-md">{{$t('dist')}}</h3>
             </div>
@@ -96,7 +96,6 @@
                   label="Notifications"
                   type="radio"
                   v-model="features[3]"
-                  dark
                   @input="gotoNextSlide"
                 />
               </div>
@@ -104,7 +103,7 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="4" class="column no-wrap flex-center">
-            <q-icon name="fas fa-brain" size="56px" />
+            <q-icon name="fas fa-head-side-virus" color="grey-5" size="56px" />
             <div class="row items-center ">
               <h3 class="q-pr-md">{{$t('memory')}}</h3>
             </div>
@@ -120,7 +119,6 @@
                   label="Notifications"
                   type="radio"
                   v-model="features[4]"
-                  dark
                   @input="gotoNextSlide"
                 />
               </div>
@@ -129,7 +127,7 @@
 
           <q-carousel-slide name="5" class="column no-wrap flex-center">
 <!--            <q-icon name="layers" size="56px" />-->
-            <q-icon name="fas fa-bed" size="56px" />
+            <q-icon name="fas fa-bed" color="grey-5" size="56px" />
             <div class="row items-center ">
             <h3 class="q-pr-md">{{$t('sleep')}}</h3>
 <!--              <q-btn round icon="far fa-question-circle" size="xs" @click="info = true"></q-btn>-->
@@ -181,7 +179,6 @@
                   label="Notifications"
                   type="radio"
                   v-model="features[5]"
-                  dark
                   @input="gotoNextSlide"
                 />
               </div>
@@ -190,7 +187,7 @@
             <div class="row justify-center q-pt-lg" >
               <!--                <q-btn label="Zurücksetzen" type="reset" color="accent" outline  />-->
               <!--                <q-btn label="Weiter" color="accent" type="submit" class="q-ml-sm" />-->
-              <q-btn :label="$t('next_btn')" rounded color="accent" @click="submitQuestionnaire" />
+              <q-btn :label="$t('next_btn')" rounded color="primary" @click="submitQuestionnaire" />
             </div>
           </q-carousel-slide>
 
@@ -228,8 +225,9 @@
 .custom-caption
   text-align: center
   padding: 12px
-  color: white
-  background-color: rgba(0, 0, 0, .3)
+  //color: white
+  //background-color: rgba(25, 118, 210, 0.1)
+  background-color: rgba(0,0,0,0)
 
 </style>
 

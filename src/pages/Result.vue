@@ -43,9 +43,9 @@
 
           <q-card-section style="max-height: 50vh" class="scroll">
             <p></p>
-            Sensitivität des Tests : 90%<br/>
-            Spezifität des Tests : 75%<br/>
-            Präzision (positiver prädiktiver Wert): 84%
+            {{$t('sensitivity')}} 90%<br/>
+            {{$t('specificity')}} 75%<br/>
+            {{$t('ppv')}} 84%
           </q-card-section>
 
           <q-separator />

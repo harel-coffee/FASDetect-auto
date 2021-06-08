@@ -50,8 +50,12 @@ export default {
   high_risk: 'HOHES RISIKO',
   unknown_risk: 'UNBEKANNTES RISIKO',
   res1: 'Es besteht ein ',
-  res2: ' von FASD',
+  res2: ' für FASD',
   end_btn: 'Beenden',
-  res_detail_h: 'Ergebnis - Detailansicht'
+  res_detail_h: 'Ergebnis - Detailansicht',
+
+  sensitivity: 'Sensitivität des Tests : ',
+  specificity: 'Spezifität des Tests : ',
+  ppv: 'Positiver Prädiktiver Wert : '
 
 }

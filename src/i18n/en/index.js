@@ -19,6 +19,20 @@ export default {
 
   // Questionnaire
 
+  questionnaire: 'Questionnaire',
+  next_btn: 'Next',
+  yes: 'Yes',
+  no: 'No',
+
+  gku: 'z-score of head circumference at birth',
+  gku_label: 'z-score',
+  gl: 'z-score of birth length',
+  gl_label: 'z-score',
+  iq: 'Intelligence below average?',
+  dist: 'Socially intrusive behaviour?',
+  sleep: 'Sleep disturbance?',
+  memory: 'Impairment in memory?',
+
   // Result
 
   result_h: 'RESULT',

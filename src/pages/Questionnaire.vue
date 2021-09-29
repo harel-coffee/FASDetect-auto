@@ -187,7 +187,7 @@
             <div class="row justify-center q-pt-lg" >
               <!--                <q-btn label="Zurücksetzen" type="reset" color="accent" outline  />-->
               <!--                <q-btn label="Weiter" color="accent" type="submit" class="q-ml-sm" />-->
-              <q-btn :label="$t('next_btn')" rounded color="primary" @click="submitQuestionnaire" />
+              <q-btn :label="$t('next_btn')" rounded outline color="primary" @click="submitQuestionnaire" />
             </div>
           </q-carousel-slide>
 

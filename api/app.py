@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, json
 from flask_cors import CORS
 import glob
-import pickle
+import dill
 import numpy as np
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ def load_models():
   files = glob.glob(model_dir+'*')
   for file in files:
     print ("Loading ", file)
-    models.append(pickle.load( open( file, "rb" )))
+    models.append(dill.load( open( file, "rb" )))
     print (file, "loaded")
 
 load_models()
@@ -59,7 +59,7 @@ def predict_instance():
 # unpickle specified models and their corresponding feature scalers
 
 #   model = pickle.load( open( "models/LGBMClassifier_20201223-21h37m52s.p", "rb" ))
-  model = models[0]
+  model = models[1]
 
   clf = model["model"]
 

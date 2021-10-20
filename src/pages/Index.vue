@@ -39,7 +39,7 @@
       <q-card-actions align="between" class="q-pa-md q-pl-xl q-pr-xl">
         <q-btn outline rounded color="primary" size="md" @click="info = true">{{$t('more_info_btn')}}</q-btn>
 <!--        <q-btn unelevated :disabled="!checkbox" color="primary" icon-right="fas fa-chevron-right" @click="gotoQuestionnaire">Starten</q-btn>-->
-        <q-btn unelevated rounded :disabled="!checkbox" color="primary" size="md" @click="gotoQuestionnaire">
+        <q-btn unelevated rounded :disabled="!checkbox" color="red" size="md" @click="gotoQuestionnaire">
           <div>
             {{ $t('start_btn') }}
           </div>

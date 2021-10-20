@@ -2,7 +2,7 @@ export default {
 
   // Main / Index
 
-  language: 'Sprache',
+  language: 'Sprache ',
   title: 'Anwendung zum Screening Fetaler Alkoholspektrumstörungen',
 
   disclaimer1: 'Diese Applikation dient dem Screening von FAS(D) und soll es den behandelnden Personen erleichtern, FASD zu erkennen und eine Diagnose in die Wege zu leiten.\n' +

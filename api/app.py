@@ -21,9 +21,9 @@ def load_models():
 
 load_models()
 
-@app.route('/')
-def index():
-  return 'Available endpoints: \nmodels : GET list of available trained models\npredict : predict instance'
+# @app.route('/')
+# def index():
+#   return 'Available endpoints: \nmodels : GET list of available trained models\npredict : predict instance'
 
 # @app.route('/summary')
 #def summary():

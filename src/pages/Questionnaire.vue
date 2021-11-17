@@ -292,7 +292,11 @@ export default {
       const data = {
         features: this.features
       }
-      this.$axios.post('http://127.0.0.1:5000/predict', data, {
+      // Dev server:
+      // this.$axios.post('http://127.0.0.1:5000/predict', data, {
+      // Production server:
+      this.$axios.post('/api/predict', data, {
+
         headers: {
           // Overwrite Axios's automatically set Content-Type
           'Content-Type': 'application/json'

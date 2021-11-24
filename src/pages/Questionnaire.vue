@@ -295,7 +295,8 @@ export default {
       // Dev server:
       // this.$axios.post('http://127.0.0.1:5000/predict', data, {
       // Production server:
-      this.$axios.post('/api/predict', data, {
+      // this.$axios.post('/api/predict', data, {
+      this.$axios.post('/api', data, {
 
         headers: {
           // Overwrite Axios's automatically set Content-Type

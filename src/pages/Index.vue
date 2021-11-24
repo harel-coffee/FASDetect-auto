@@ -24,9 +24,9 @@
           <p/>
           {{$t('disclaimer3')}}
           <p/>
-          <p v-for="n in 15" :key="n">
+<!--          <p v-for="n in 15" :key="n">-->
           {{$t('disclaimer4')}}
-          </p>
+<!--          </p>-->
         </q-scroll-area>
 
       </q-card-section>

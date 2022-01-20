@@ -24,9 +24,18 @@
           <p/>
           {{$t('disclaimer3')}}
           <p/>
-<!--          <p v-for="n in 15" :key="n">-->
           {{$t('disclaimer4')}}
-<!--          </p>-->
+          <p/>
+          {{$t('pedz')}}
+          <a :href="this.$t('pedz_web_link')" style="color:#1959aa;">{{$t('pedz_web')}}, </a>
+          <a :href="this.$t('pedz_apple_link')" style="color:#1959aa;">{{$t('pedz_apple')}}, </a>
+          <a :href="this.$t('pedz_android_link')" style="color:#1959aa;">{{$t('pedz_android')}}.</a>
+          <p/>
+          {{$t('disclaimer5')}}
+          <a :href="this.$t('terms_link')" style="color:#1959aa;">{{$t('terms')}}, </a>
+          <a :href="this.$t('imprint_link')" style="color:#1959aa;">{{$t('imprint')}}, </a>
+          <a :href="this.$t('privacy_link')" style="color:#1959aa;">{{$t('privacy')}}.</a>
+
         </q-scroll-area>
 
       </q-card-section>

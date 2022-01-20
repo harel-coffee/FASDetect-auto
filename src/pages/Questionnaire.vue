@@ -31,34 +31,41 @@
 <!--            <div class="absolute-top custom-caption">-->
 <!--              <div class="text-h2" style="font-weight: 400">{{$t('questionnaire')}}</div>-->
 <!--            </div>-->
-            <q-icon name="fas fa-tape" size="56px" color="dark" class="q-mt-xl"/>
+
             <div class="q-mt-md text-center">
-              <h3>{{$t('gku')}}</h3>
-              <q-input outlined bottom-slots v-model="features[0]" :label="$t('gku_label')" color="accent" autofocus>
-<!--                <template v-slot:append>-->
-<!--                  z-->
-<!--                </template>-->
-              </q-input>
+              <q-icon name="fas fa-tape" size="56px" color="dark" class="q-mt-xl"/>
+                <h3>{{$t('gku')}}</h3>
+              <q-tooltip :delay="1000" >
+                {{$t('gku_help')}}
+              </q-tooltip>
+            <q-input class="q-mt-md text-center" outlined bottom-slots v-model="features[0]" :label="$t('gku_label')" color="accent" autofocus/>
             </div>
           </q-carousel-slide>
 
           <q-carousel-slide name="1" class="column no-wrap flex-center">
-            <q-icon name="fas fa-ruler" color="dark" size="56px" />
             <div class="q-mt-md text-center">
-            <h3>{{$t('gl')}}</h3>
+              <q-icon name="fas fa-ruler" color="dark" size="56px" />
+              <h3>{{$t('gl')}}</h3>
 
             <q-input outlined bottom-slots v-model="features[1]" :label="$t('gl_label')" color="accent">
 <!--              <template v-slot:append>-->
 <!--                cm-->
 <!--              </template>-->
             </q-input>
+
+              <q-tooltip :delay="1000" >
+                {{$t('gl_help')}}
+              </q-tooltip>
             </div>
           </q-carousel-slide>
 
           <q-carousel-slide name="2" class="column no-wrap flex-center">
-            <q-icon name="fas fa-brain" size="56px" color="dark"/>
             <div class="q-mt-md text-center">
-              <h3> {{$t('iq')}} </h3>
+              <q-icon name="fas fa-brain" size="56px" color="dark"/>
+              <h3>{{$t('iq')}}</h3>
+              <q-tooltip :delay="1000" >
+                {{$t('iq_help')}}
+              </q-tooltip>
             </div>
             <q-form
               @submit="onSubmit"
@@ -80,9 +87,12 @@
 
           <q-carousel-slide name="3" class="column no-wrap flex-center">
             <!--            <q-icon name="layers" size="56px" />-->
-            <q-icon name="fas fa-people-arrows" color="dark" size="56px" />
-            <div class="row items-center ">
+            <div class="q-mt-md text-center">
+              <q-icon name="fas fa-people-arrows" color="dark" size="56px"/>
               <h3 class="q-pr-md">{{$t('dist')}}</h3>
+              <q-tooltip :delay="1000" >
+                {{$t('dist_help')}}
+              </q-tooltip>
             </div>
             <q-form
               @submit="onSubmit"
@@ -103,9 +113,12 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="4" class="column no-wrap flex-center">
-            <q-icon name="fas fa-head-side-virus" color="dark" size="56px" />
-            <div class="row items-center ">
+            <div class="q-mt-md text-center">
+              <q-icon name="fas fa-head-side-virus" color="dark" size="56px"/>
               <h3 class="q-pr-md">{{$t('memory')}}</h3>
+              <q-tooltip :delay="1000" >
+                {{$t('memory_help')}}
+              </q-tooltip>
             </div>
             <q-form
               @submit="onSubmit"
@@ -127,9 +140,12 @@
 
           <q-carousel-slide name="5" class="column no-wrap flex-center">
 <!--            <q-icon name="layers" size="56px" />-->
-            <q-icon name="fas fa-bed" color="dark" size="56px" />
-            <div class="row items-center ">
-            <h3 class="q-pr-md">{{$t('sleep')}}</h3>
+            <div class="q-mt-md text-center">
+              <q-icon name="fas fa-bed" color="dark" size="56px" />
+              <h3 class="q-pr-md">{{$t('sleep')}}</h3>
+              <q-tooltip :delay="1000" >
+                {{$t('sleep_help')}}
+              </q-tooltip>
 <!--              <q-btn round icon="far fa-question-circle" size="xs" @click="info = true"></q-btn>-->
             </div>
 <!--            <q-dialog v-model="info">-->

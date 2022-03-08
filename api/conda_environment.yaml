@@ -1,0 +1,9 @@
+name: fasdetect_backend
+dependencies:
+  - python=3.7 
+  - numpy
+  - scikit-learn=0.24.2
+  - flask
+  - flask_cors
+  - dill
+  - lightgbm

@@ -10,10 +10,11 @@
           padding
           :vertical="vertical"
           arrows
+          control-color="accent"
           ref="carousel"
           :navigation="navigation"
           :navigation-position="navPos"
-          class="bg-primary text-white rounded-borders"
+          class="bg-white rounded-borders"
           v-on:keydown.enter="gotoNextSlide"
           v-on:wheel="scrollSlides"
 
@@ -21,106 +22,77 @@
 
           <template v-slot:navigation-icon="{ active, btnProps, onClick }">
 <!--            <q-btn v-if="active" size="xl" icon="home" color="yellow" flat round dense @click="onClick" />-->
-            <q-btn v-if="active" size="xs" :icon="btnProps.icon" flat round dense @click="onClick" />
+            <q-btn v-if="active" size="xs" :icon="btnProps.icon" color="accent" flat round dense @click="onClick" />
 <!--            <q-btn v-else size="xs" :icon="btnProps.icon" color="grey-5" flat round dense @click="onClick" />-->
-            <q-btn v-else size="3px" :icon="btnProps.icon" color="grey-5" flat round dense @click="onClick" />
+            <q-btn v-else size="3px" :icon="btnProps.icon" color="grey-6" flat round dense @click="onClick" />
           </template>
 
           <q-carousel-slide name="0" class="column no-wrap flex-center"> <!--- v-for --->
-            <div class="absolute-top custom-caption">
-              <div class="text-h2">Fragebogen</div>
-<!--              <div class="text-subtitle1">Geburt</div>-->
-            </div>
-            <q-icon name="fas fa-tape" size="56px" class="q-mt-xl"/>
+<!--            <div class="absolute-top custom-caption">-->
+<!--              <div class="text-h2" style="font-weight: 400">{{$t('questionnaire')}}</div>-->
+<!--            </div>-->
+
             <div class="q-mt-md text-center">
-              <h3> Geburtsgewicht (Perzentil)</h3>
-              <q-input dark outlined bottom-slots v-model="features[0]" label="Geburtsgewicht" color="grey-1" autofocus>
-<!--                <template v-slot:append>-->
-<!--                  cm-->
-<!--                </template>-->
-              </q-input>
+              <q-icon name="fas fa-tape" size="56px" color="dark" class="q-mt-xl"/>
+                <h3>{{$t('gku')}}</h3>
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
+                {{$t('gku_help')}}
+              </q-tooltip>
+            <q-input class="q-mt-md text-center" outlined bottom-slots v-model="features[0]" :label="$t('gku_label')" color="accent" autofocus/>
             </div>
           </q-carousel-slide>
 
           <q-carousel-slide name="1" class="column no-wrap flex-center">
-            <q-icon name="fas fa-tape" size="56px" />
             <div class="q-mt-md text-center">
-            <h3> Geburtslänge (Perzentil) </h3>
+              <q-icon name="fas fa-ruler" color="dark" size="56px" />
+              <h3>{{$t('gl')}}</h3>
 
-            <q-input dark outlined bottom-slots v-model="features[1]" label="Geburtslänge" color="grey-1">
+            <q-input outlined bottom-slots v-model="features[1]" :label="$t('gl_label')" color="accent">
 <!--              <template v-slot:append>-->
 <!--                cm-->
 <!--              </template>-->
             </q-input>
+
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
+                {{$t('gl_help')}}
+              </q-tooltip>
             </div>
           </q-carousel-slide>
 
           <q-carousel-slide name="2" class="column no-wrap flex-center">
-            <q-icon name="far fa-calendar-alt" size="56px" />
             <div class="q-mt-md text-center">
-              <h3> Anzahl funktioneller Störungen des ZNS </h3>
-
-              <q-slider dark v-model="features[2]" :min="0" :max="8" color="accent" label label-always markers>
-                <template v-slot:append>
-                  SSW
-                </template>
-              </q-slider>
+              <q-icon name="fas fa-brain" size="56px" color="dark"/>
+              <h3>{{$t('iq')}}</h3>
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
+                {{$t('iq_help')}}
+              </q-tooltip>
             </div>
+            <q-form
+              @submit="onSubmit"
+              @reset="onReset"
+              class="q-gutter-md"
+              autocomplete="off"
+            >
+              <div class="q-pa-md">
+                <q-option-group
+                  :options="options"
+                  label="Notifications"
+                  type="radio"
+                  v-model="features[2]"
+                  @input="gotoNextSlide"
+                />
+              </div>
+            </q-form>
           </q-carousel-slide>
-
-<!--          <q-carousel-slide name="layers" class="column no-wrap flex-center">-->
-<!--            <q-icon name="fas fa-ruler" size="56px" />-->
-<!--            <div class="q-mt-md text-center">-->
-<!--            <h3> Größe Geburt </h3>-->
-<!--            <q-input dark outlined bottom-slots v-model="features[2]" label="Kopfumfang" color="grey-1">-->
-<!--              <template v-slot:append>-->
-<!--                cm-->
-<!--              </template>-->
-<!--            </q-input>-->
-<!--            </div>-->
-<!--          </q-carousel-slide>-->
-
-<!--          <q-carousel-slide name="map" class="column no-wrap flex-center">-->
-<!--            <q-icon name="fas fa-ruler" size="56px" />-->
-<!--            <div class="q-mt-md text-center">-->
-<!--            <h3> Größe jetzt </h3>-->
-<!--            <q-input dark outlined bottom-slots v-model="features[3]" label="Kopfumfang" color="grey-1">-->
-<!--              <template v-slot:append>-->
-<!--                cm-->
-<!--              </template>-->
-<!--            </q-input>-->
-<!--            </div>-->
-<!--          </q-carousel-slide>-->
-
-<!--          <q-carousel-slide name="q5" class="column no-wrap flex-center">-->
-<!--            <q-icon name="fas fa-weight" size="56px" />-->
-<!--            <div class="q-mt-md text-center">-->
-<!--              <h3> Gewicht Geburt </h3>-->
-<!--              <q-input dark outlined bottom-slots v-model="features[4]" label="Kopfumfang" color="grey-1">-->
-<!--                <template v-slot:append>-->
-<!--                  kg-->
-<!--                </template>-->
-<!--              </q-input>-->
-<!--            </div>-->
-<!--          </q-carousel-slide>-->
-
-<!--          <q-carousel-slide name="q6" class="column no-wrap flex-center">-->
-<!--            <q-icon name="fas fa-weight" size="56px" />-->
-<!--            <div class="q-mt-md text-center">-->
-<!--              <h3> Gewicht jetzt </h3>-->
-<!--              <q-input dark outlined bottom-slots v-model="features[5]" label="Kopfumfang" color="grey-1">-->
-<!--                <template v-slot:append>-->
-<!--                  kg-->
-<!--                </template>-->
-<!--              </q-input>-->
-<!--            </div>-->
-<!--          </q-carousel-slide>-->
 
           <q-carousel-slide name="3" class="column no-wrap flex-center">
             <!--            <q-icon name="layers" size="56px" />-->
-            <q-icon name="far fa-meh-blank" size="56px" />
-            <div class="row items-center ">
-              <h3 class="q-pr-md">Psychische Komorbidität vorhanden?</h3>
+            <div class="q-mt-md text-center">
+              <q-icon name="fas fa-people-arrows" color="dark" size="56px"/>
+              <h3 class="q-pr-md">{{$t('dist')}}</h3>
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
+                {{$t('dist_help')}}
+              </q-tooltip>
             </div>
             <q-form
               @submit="onSubmit"
@@ -134,7 +106,6 @@
                   label="Notifications"
                   type="radio"
                   v-model="features[3]"
-                  dark
                   @input="gotoNextSlide"
                 />
               </div>
@@ -142,9 +113,12 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="4" class="column no-wrap flex-center">
-            <q-icon name="far fa-meh-blank" size="56px" />
-            <div class="row items-center ">
-              <h3 class="q-pr-md">Fehlsichtigkeit?</h3>
+            <div class="q-mt-md text-center">
+              <q-icon name="fas fa-head-side-virus" color="dark" size="56px"/>
+              <h3 class="q-pr-md">{{$t('memory')}}</h3>
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
+                {{$t('memory_help')}}
+              </q-tooltip>
             </div>
             <q-form
               @submit="onSubmit"
@@ -158,7 +132,6 @@
                   label="Notifications"
                   type="radio"
                   v-model="features[4]"
-                  dark
                   @input="gotoNextSlide"
                 />
               </div>
@@ -167,9 +140,12 @@
 
           <q-carousel-slide name="5" class="column no-wrap flex-center">
 <!--            <q-icon name="layers" size="56px" />-->
-            <q-icon name="far fa-meh-blank" size="56px" />
-            <div class="row items-center ">
-            <h3 class="q-pr-md">Schlafstörungen?</h3>
+            <div class="q-mt-md text-center">
+              <q-icon name="fas fa-bed" color="dark" size="56px" />
+              <h3 class="q-pr-md">{{$t('sleep')}}</h3>
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
+                {{$t('sleep_help')}}
+              </q-tooltip>
 <!--              <q-btn round icon="far fa-question-circle" size="xs" @click="info = true"></q-btn>-->
             </div>
 <!--            <q-dialog v-model="info">-->
@@ -219,7 +195,6 @@
                   label="Notifications"
                   type="radio"
                   v-model="features[5]"
-                  dark
                   @input="gotoNextSlide"
                 />
               </div>
@@ -228,7 +203,7 @@
             <div class="row justify-center q-pt-lg" >
               <!--                <q-btn label="Zurücksetzen" type="reset" color="accent" outline  />-->
               <!--                <q-btn label="Weiter" color="accent" type="submit" class="q-ml-sm" />-->
-              <q-btn label="Weiter" color="accent" @click="submitQuestionnaire" />
+              <q-btn :label="$t('next_btn')" rounded outline color="primary" @click="submitQuestionnaire" />
             </div>
           </q-carousel-slide>
 
@@ -259,6 +234,7 @@
 .q-carousel
   width: 80%
   height: 80vh
+  padding-left: 44px
 
 .rounded-borders
   border-radius: 32px
@@ -266,8 +242,9 @@
 .custom-caption
   text-align: center
   padding: 12px
-  color: white
-  background-color: rgba(0, 0, 0, .3)
+  //color: white
+  //background-color: rgba(25, 118, 210, 0.1)
+  background-color: rgba(0,0,0,0)
 
 </style>
 
@@ -280,12 +257,12 @@ export default {
       navigation: true,
       navPos: 'right',
       slide: '0',
-      features: ['', '', 0, '', '', ''],
+      features: ['', '', '', '', '', ''],
       accept: true,
       info: false,
       options: [
-        { label: 'Ja', value: 1, color: 'accent' },
-        { label: 'Nein', value: 0, color: 'accent' }
+        { label: this.$t('yes'), value: 1, color: 'accent' },
+        { label: this.$t('no'), value: 0, color: 'accent' }
       ]
     }
   },
@@ -323,10 +300,20 @@ export default {
     },
 
     submitQuestionnaire () {
+      for (let i = 0; i < this.features.length; i++) {
+        if (this.features[i] === '') {
+          this.features[i] = 'nan'
+        }
+      }
+
       const data = {
         features: this.features
       }
-      this.$axios.post('http://127.0.0.1:5000/predict', data, {
+      // Dev server:
+      // this.$axios.post('http://127.0.0.1:5000/predict', data, {
+      // Production server:
+      this.$axios.post('/api', data, {
+
         headers: {
           // Overwrite Axios's automatically set Content-Type
           'Content-Type': 'application/json'
@@ -341,7 +328,7 @@ export default {
       // })
         .then((response) => {
           if (response.status === 200) {
-            this.$q.sessionStorage.set('risk', response.data.predict_proba)
+            this.$q.sessionStorage.set('prediction', response.data)
             this.$router.replace('result')
             this.$q.notify({
               color: 'green-4',

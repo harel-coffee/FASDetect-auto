@@ -56,12 +56,23 @@ def create_app():
   #   print('REQUEST JSON\m', request.json)
 
     req_data = request.get_json()
-    features = np.array(req_data['features']).reshape(1, -1)
+    req_features = np.array(req_data['features']).reshape(1, -1)
+
+    # only 6 features are used for prediction, but 14 features have been used to create the model
+    # in order to obtain good imputations, but only 6 features have been used by the classifier
+    # we need to transform the input to the model to the required input format (i.e. 14 dimensions)
+
+    nan = float("nan")
+    feature_idx =  [0,3,6,8,10,12]
+    features = [nan] * 14
+    for idx, value in enumerate(req_features[0]):
+      features[feature_idx[idx]] = value
+    features = np.array(features).reshape(1, -1)
 
   # unpickle specified models and their corresponding feature scalers
 
   #   model = pickle.load( open( "models/LGBMClassifier_20201223-21h37m52s.p", "rb" ))
-    model = models[1]
+    model = models[0]
 
     clf = model["model"]
 

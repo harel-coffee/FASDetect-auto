@@ -35,7 +35,7 @@
             <div class="q-mt-md text-center">
               <q-icon name="fas fa-tape" size="56px" color="dark" class="q-mt-xl"/>
                 <h3>{{$t('gku')}}</h3>
-              <q-tooltip :delay="1000" >
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
                 {{$t('gku_help')}}
               </q-tooltip>
             <q-input class="q-mt-md text-center" outlined bottom-slots v-model="features[0]" :label="$t('gku_label')" color="accent" autofocus/>
@@ -53,7 +53,7 @@
 <!--              </template>-->
             </q-input>
 
-              <q-tooltip :delay="1000" >
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
                 {{$t('gl_help')}}
               </q-tooltip>
             </div>
@@ -63,7 +63,7 @@
             <div class="q-mt-md text-center">
               <q-icon name="fas fa-brain" size="56px" color="dark"/>
               <h3>{{$t('iq')}}</h3>
-              <q-tooltip :delay="1000" >
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
                 {{$t('iq_help')}}
               </q-tooltip>
             </div>
@@ -90,7 +90,7 @@
             <div class="q-mt-md text-center">
               <q-icon name="fas fa-people-arrows" color="dark" size="56px"/>
               <h3 class="q-pr-md">{{$t('dist')}}</h3>
-              <q-tooltip :delay="1000" >
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
                 {{$t('dist_help')}}
               </q-tooltip>
             </div>
@@ -116,7 +116,7 @@
             <div class="q-mt-md text-center">
               <q-icon name="fas fa-head-side-virus" color="dark" size="56px"/>
               <h3 class="q-pr-md">{{$t('memory')}}</h3>
-              <q-tooltip :delay="1000" >
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
                 {{$t('memory_help')}}
               </q-tooltip>
             </div>
@@ -143,7 +143,7 @@
             <div class="q-mt-md text-center">
               <q-icon name="fas fa-bed" color="dark" size="56px" />
               <h3 class="q-pr-md">{{$t('sleep')}}</h3>
-              <q-tooltip :delay="1000" >
+              <q-tooltip content-class="text-body1 shadow-4" max-width=60% :delay="1000" >
                 {{$t('sleep_help')}}
               </q-tooltip>
 <!--              <q-btn round icon="far fa-question-circle" size="xs" @click="info = true"></q-btn>-->
@@ -234,6 +234,7 @@
 .q-carousel
   width: 80%
   height: 80vh
+  padding-left: 44px
 
 .rounded-borders
   border-radius: 32px
@@ -311,7 +312,6 @@ export default {
       // Dev server:
       // this.$axios.post('http://127.0.0.1:5000/predict', data, {
       // Production server:
-      // this.$axios.post('/api/predict', data, {
       this.$axios.post('/api', data, {
 
         headers: {
